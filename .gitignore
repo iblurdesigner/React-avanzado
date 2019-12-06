@@ -2,7 +2,7 @@ dist/
 node_modules/
 ./package-lock.json
 commits.txt
-now_deploys_my.txt
+/now_deploys_my.txt
 
 # Node template
 
