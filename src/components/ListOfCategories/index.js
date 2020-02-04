@@ -8,7 +8,7 @@ function useCategoriesData () {
 
   useEffect(function () {
     setLoading(true)
-    window.fetch('https://petgram-blur-42d6ufcsk.now.sh/categories')
+    window.fetch('https://petgram-blur.now.sh/categories')
       .then(res => res.json())
       .then(response => {
         setCategories(response)
