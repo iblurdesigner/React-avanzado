@@ -1,12 +1,32 @@
 import React, { useEffect, useRef, useState, Fragment } from 'react'
 import { Article, ImgWrapper, Img, Button } from './styles'
-import { MdFavoriteBorder } from 'react-icons/md'
+import { MdFavoriteBorder, MdFavorite } from 'react-icons/md'
 
 const DEFAULT_IMAGE = 'https://res.cloudinary.com/midudev/image/upload/w_300/q_80/v1560262103/dogs.png'
+
+function useLocalStorage (key, initialValue) {
+
+}
 
 export const PhotoCard = ({ id, likes = 0, src = DEFAULT_IMAGE }) => {
   const element = useRef(null)
   const [show, setShow] = useState(false)
+
+  const key = `like-${id}`
+
+  const [liked, setLiked] = useState(() => {
+    try {
+      const like = window.localStorage.getItem(key)
+      if (like === 'true') {
+        return like
+      }
+      return false
+    } catch (e) {
+      return false
+    }
+  })
+
+  console.log(liked)
 
   useEffect(() => {
     Promise.resolve(typeof window.IntersectionObserver !== 'undefined' ? window.IntersectionObserver : import('intersection-observer'))
@@ -22,6 +42,17 @@ export const PhotoCard = ({ id, likes = 0, src = DEFAULT_IMAGE }) => {
       })
   }, [element])
 
+  const Icon = liked ? MdFavorite : MdFavoriteBorder
+
+  const setLocalStorage = value => {
+    try {
+      window.localStorage.setItem(key, value)
+      setLiked(value)
+    } catch {
+      console.error()
+    }
+  }
+
   return (
     <Article ref={element}>
       {
@@ -32,10 +63,10 @@ export const PhotoCard = ({ id, likes = 0, src = DEFAULT_IMAGE }) => {
             </ImgWrapper>
           </a>
 
-          <Button>
-            <MdFavoriteBorder size='32px' />{likes} likes!
+          <Button onClick={() => setLocalStorage(!liked)}>
+            <Icon size='32px' />{likes} likes!
           </Button>
-        </>
+                </>
       }
 
     </Article>
