@@ -1,7 +1,7 @@
 import React from 'react'
 import { PhotoCard } from '../PhotoCard'
 
-export const ListOfPhotoCardComponent = ({ data: { photos = [] } } = {}) => {
+export const ListOfPhotoCardsComponent = ({ data: { photos = [] } } = {}) => {
   return (
     <ul>
       {

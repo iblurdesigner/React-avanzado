@@ -1,4 +1,4 @@
 import { withPhotos } from '../hoc/withPhotos'
-import { ListOfPhotoCardComponent } from '../components/ListOfPhotoCard'
+import { ListOfPhotoCardsComponent } from '../components/ListOfPhotoCards'
 
-export const ListOfPhotoCard = withPhotos(ListOfPhotoCardComponent)
+export const ListOfPhotoCards = withPhotos(ListOfPhotoCardsComponent)
