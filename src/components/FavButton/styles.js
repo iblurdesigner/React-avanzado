@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { fadeIn } from '../../styles/animation'
 
 export const Button = styled.button`
@@ -15,7 +15,7 @@ export const Button = styled.button`
         ${props => props.liked && css`
             {
                 ${fadeIn({ time: '.7s' })}
-                color: red;
+                color: red !important;
             }
         `}
     }
