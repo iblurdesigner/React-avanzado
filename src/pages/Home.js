@@ -3,21 +3,17 @@ import { ListOfCategories } from '../components/ListOfCategories'
 import { ListOfPhotoCards } from '../container/ListOfPhotoCards'
 import { Layout } from '../components/Layout'
 
-const HomePage = ({ categoryId }) => {
+const HomePage = ({ id }) => {
   return (
     <Layout title='Tu app de fotos de mascotas' subtitle='Con Petgram puedes encontrar fotos de animales domésticos muy bonitos'>
+      <title>Petgram - </title>
+      <meta name='description' content='' />
       <ListOfCategories />
-      <ListOfPhotoCards categoryId={categoryId} />
+      <ListOfPhotoCards categoryId={id} />
     </Layout>
   )
 }
 
 export const Home = React.memo(HomePage, (prevProps, props) => {
-  return prevProps.categoryId === props.categoryId
+  return prevProps.id === props.id
 })
-
-// export default () => {
-//   React.memo(HomePage, (prevProps, props) => {
-//     return prevProps.categoryId === props.categoryId
-//   })
-// }
